@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail | crédit</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/feuille.css')}}">
+    </head>
+<body>
+    <h2>BIENVENUE SUR LE PORTAIL DE VOTRE BANQUE ! </h2> <br>
+    <p><i> Pour tester votre éligibilité à un prêt bancaire, veuillez renseigner le formulaire ci-dessous svp ! Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p>
+    <form action="{{url_for('predict')}}" method="POST">
+        <fieldset class="">
+            <legend>Transaction</legend>
+              <label for="mont_transaction">Montant total de la transaction (12 derniers mois) <em>*</em></label>
+              <input id="mont_transaction" placeholder="xxxxxxxxxx"  name="montant_transaction" required>
+    
+    
+              <label for="nbre_trans">Nombre total de transactions (12 derniers mois) <em>*</em></label>
+              <input id="nbre_trans" placeholder="xxxxxxxxxx" name="nbre_transaction" required> <br>
+    
+    
+              
+              <label for="chgt_trans">Changement du nombre de transactions (T4 par rapport au T1) <em>*</em></label>
+              <input id="chgt_trans" type="number" placeholder="xxxxxxxxxx" name="chgt_transaction" required>
+          
+              <label for="chgt_mt_trans">Changement du montant de la transaction (T4 par rapport au T1) <em>*</em></label>
+              <input id="chgt_mt_trans" type="number" placeholder="xxxxxxxxxx" name="chgt_montant" required ><br>
+    
+            </fieldset>
+            <fieldset>
+                <legend>Autres informations client</legend>
+                  <label for="prod_mois">Nombre total de produits détenus par le client<em>*</em></label>
+                   <input id="prod_mois" type="number" placeholder="xxxxxxxxxx"  name="produit_mensuel" required>
+                 
+                   <label for="mois_inact">Nombre de mois d'inactivité au cours des 12 derniers mois <em>*</em></label>
+                  <input id="mois_inact" type="number" placeholder="xxxxxxxxxx" name="mois_inactivite" required><br>
+                  
+                  <label for="contact">Nombre de contacts au cours des 12 derniers mois <em>*</em></label>
+                  <input id="contact" type="number" placeholder="xxxxxxxxxx" name="nbre_contact" required>
+                  
+                  <label for="solde">Solde renouvelable total sur la carte de crédit <em>*</em></label>
+                  <input id="solde" type="number" placeholder="xxxxxxxxxx" name="solde_renouv" required><br>
+                 
+                  <label for="taux_util">Taux d'utilisation moyen de la carte <em>*</em></label>
+                  <input id="taux_util" type="number" placeholder="xxxxxxxxxx"  name="taux_utilisation" required>
+                </fieldset>
+            <input type="submit" value="Résulats">
+
+
+
+    </form><br>
+ <div class="reponse">
+  {{statement}}
+</div>
+    
+</body>
+</html>
